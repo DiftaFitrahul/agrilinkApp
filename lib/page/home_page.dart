@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gdsc_project/page/auth_checker.dart';
+import 'package:gdsc_project/provider/auth_provider/auth_provider.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   HomePage({super.key});
   final _searchController = TextEditingController();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -153,8 +156,19 @@ class HomePage extends StatelessWidget {
                       ]),
                     ],
                   ),
-                )
-              ])
+                ),
+              ]),
+              ElevatedButton(
+                  onPressed: () {
+                    ref.read(authProvider).signOut().then((_) {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const AuthChecker(),
+                          ));
+                    });
+                  },
+                  child: const Text('Sign Out'))
             ],
           ),
         ),

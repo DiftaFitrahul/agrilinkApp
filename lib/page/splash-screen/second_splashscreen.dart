@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:gdsc_project/page/registerPage/letus.dart';
 import 'package:gdsc_project/page/registerPage/silderIntro_page.dart';
 
 class SecondSplashScreen extends StatefulWidget {
@@ -27,7 +28,7 @@ class _SecondSplashScreenState extends State<SecondSplashScreen>
       CurvedAnimation(parent: _controller, curve: Curves.easeIn);
 
   late final AnimationController _controller2 = AnimationController(
-      vsync: this, duration: const Duration(milliseconds: 3900))
+      vsync: this, duration: const Duration(milliseconds: 3600))
     ..forward();
   late final Animation<double> _animation2 =
       CurvedAnimation(parent: _controller2, curve: Curves.easeIn);
@@ -59,7 +60,7 @@ class _SecondSplashScreenState extends State<SecondSplashScreen>
                       opacity: _animation2,
                       child: const Align(
                           alignment: Alignment.bottomCenter,
-                          child: SliderPage()))
+                          child: SliderIntroPage()))
                   : const Center(
                       child: SizedBox(
                         height: 600,
@@ -84,7 +85,12 @@ class _SecondSplashScreenState extends State<SecondSplashScreen>
                 child: Align(
                   alignment: const Alignment(0, 0.85),
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (ctx) => const Register()));
+                    },
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 40),
                       child: Row(

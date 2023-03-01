@@ -4,14 +4,14 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:gdsc_project/component/pageview_indicator.dart';
 import 'package:gdsc_project/component/slider_widget.dart';
 
-class SliderPage extends StatefulWidget {
-  const SliderPage({super.key});
+class SliderIntroPage extends StatefulWidget {
+  const SliderIntroPage({super.key});
 
   @override
-  State<SliderPage> createState() => _SliderPageState();
+  State<SliderIntroPage> createState() => _SliderPageState();
 }
 
-class _SliderPageState extends State<SliderPage> {
+class _SliderPageState extends State<SliderIntroPage> {
   int currentNumber = 0;
   final _pageController = PageController();
 
@@ -27,7 +27,7 @@ class _SliderPageState extends State<SliderPage> {
     const SliderWidget(
         title: 'nasi',
         description:
-            'descriptionmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm',
+            'description about makan nasi padang di rumahnya teman saya yang bernama tidak tahu',
         imagePath: 'assets/images/monitoring.png'),
   ];
 
@@ -49,7 +49,7 @@ class _SliderPageState extends State<SliderPage> {
             itemBuilder: (context, index) => pages[index],
           ),
           Positioned(
-              bottom: MediaQuery.of(context).size.height * 0.29,
+              bottom: MediaQuery.of(context).size.height * 0.25,
               right: 0,
               left: 0,
               child: PageViewIndicator(

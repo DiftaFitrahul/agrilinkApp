@@ -16,12 +16,12 @@ class _FirstSplashScreenState extends State<FirstSplashScreen> {
 
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 3)).then((value) {
+    Future.delayed(const Duration(seconds: 2)).then((value) {
       end = true;
       Navigator.pushReplacement(
           context,
           PageRouteBuilder(
-            transitionDuration: const Duration(seconds: 2),
+            transitionDuration: const Duration(seconds: 1),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) =>
                     FadeTransition(opacity: animation, child: child),
@@ -38,7 +38,7 @@ class _FirstSplashScreenState extends State<FirstSplashScreen> {
       backgroundColor: Colors.white,
       body: Center(
         child: AnimatedOpacity(
-          duration: const Duration(seconds: 2),
+          duration: const Duration(seconds: 1),
           opacity: end ? 0 : 1,
           child: const Image(
               width: 170,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:gdsc_project/page/loginpage/loginpage.dart';
 
 class Register extends StatelessWidget {
   const Register({super.key});
@@ -82,7 +83,10 @@ class Register extends StatelessWidget {
                   const Text('Already have an account?',
                       style: TextStyle(color: Colors.white)),
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (ctx) => LoginPage()));
+                      },
                       child: const Text('Login',
                           style: TextStyle(
                               color: Colors.white,

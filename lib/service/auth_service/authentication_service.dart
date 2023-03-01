@@ -40,7 +40,9 @@ class AuthenticationService {
       rethrow;
     }
 
-    void signOut() async {
+    
+  }
+  Future<void> signOut() async {
       try {
         _auth.signOut();
         _googleAuth.signOut();
@@ -48,5 +50,4 @@ class AuthenticationService {
         rethrow;
       }
     }
-  }
 }
