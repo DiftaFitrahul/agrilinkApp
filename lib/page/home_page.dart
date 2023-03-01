@@ -10,8 +10,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Container(
-        color: Colors.green,
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(
@@ -160,7 +158,7 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
-      )),
+      ),
     );
   }
 }
