@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:gdsc_project/page/loginpage/loginpage.dart';
 import 'package:gdsc_project/page/registerPage/letus.dart';
 import 'package:gdsc_project/page/registerPage/silderIntro_page.dart';
 import 'package:gdsc_project/page/splash-screen/first_splashscreen.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme:
           ThemeData(scaffoldBackgroundColor: Color.fromARGB(255, 135, 193, 89)),
       debugShowCheckedModeBanner: false,
-      home: Register(),
+      home: LoginPage(),
     );
   }
 }
