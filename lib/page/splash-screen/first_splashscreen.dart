@@ -16,12 +16,15 @@ class _FirstSplashScreenState extends State<FirstSplashScreen> {
 
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 2)).then((value) {
+    Future.delayed(const Duration(seconds: 3)).then((value) {
       end = true;
       Navigator.pushReplacement(
           context,
           PageRouteBuilder(
             transitionDuration: const Duration(seconds: 2),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) =>
+                    FadeTransition(opacity: animation, child: child),
             pageBuilder: (context, animation, secondaryAnimation) =>
                 const SecondSplashScreen(),
           ));
