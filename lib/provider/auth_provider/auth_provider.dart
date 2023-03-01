@@ -1,0 +1,1 @@
+final authProvider = Provider
