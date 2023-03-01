@@ -5,7 +5,7 @@ class AuthenticationService {
   final _auth = FirebaseAuth.instance;
   final _googleAuth = GoogleSignIn.standard();
 
-  Stream<User?> get dataUser => _auth.authStateChanges();
+  Stream<User?> get userState => _auth.authStateChanges();
 
   Future<void> signIn(String email, String password) async {
     try {
