@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:gdsc_project/page/silderIntro_page.dart';
+import 'package:gdsc_project/page/registerPage/silderIntro_page.dart';
 
 class SecondSplashScreen extends StatefulWidget {
   const SecondSplashScreen({super.key});
@@ -27,14 +27,14 @@ class _SecondSplashScreenState extends State<SecondSplashScreen>
       CurvedAnimation(parent: _controller, curve: Curves.easeIn);
 
   late final AnimationController _controller2 = AnimationController(
-      vsync: this, duration: const Duration(milliseconds: 3100))
+      vsync: this, duration: const Duration(milliseconds: 3900))
     ..forward();
   late final Animation<double> _animation2 =
       CurvedAnimation(parent: _controller2, curve: Curves.easeIn);
 
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 2)).then((_) {
+    Future.delayed(const Duration(seconds: 2)).then((_) {
       setState(() {
         ready = true;
       });
