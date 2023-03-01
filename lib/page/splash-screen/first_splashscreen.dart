@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:gdsc_project/page/home_page.dart';
+import 'package:gdsc_project/page/splash-screen/second_splashscreen.dart';
 
 class FirstSplashScreen extends StatefulWidget {
   const FirstSplashScreen({super.key});
@@ -11,24 +12,36 @@ class FirstSplashScreen extends StatefulWidget {
 }
 
 class _FirstSplashScreenState extends State<FirstSplashScreen> {
+  bool end = false;
+
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 2)).then((value) {
+      end = true;
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomePage()));
+          context,
+          PageRouteBuilder(
+            transitionDuration: const Duration(seconds: 2),
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                const SecondSplashScreen(),
+          ));
     });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Image(
-            width: 170,
-            height: 170,
-            image: AssetImage('assets/images/logo-1.png')),
+        child: AnimatedOpacity(
+          duration: const Duration(seconds: 2),
+          opacity: end ? 0 : 1,
+          child: const Image(
+              width: 170,
+              height: 170,
+              image: AssetImage('assets/images/logo-1.png')),
+        ),
       ),
     );
   }
