@@ -35,6 +35,7 @@ dependencies:
   google_sign_in: ^6.0.1
   flutter_riverpod: ^2.3.0
   flutter_native_splash: ^2.2.18
+  carousel_slider: ^4.2.1
   
 
   
@@ -82,6 +83,9 @@ flutter:
     - assets/icons/Google.png
     - assets/icons/Twitter.png
     - assets/images/farm-1.png
+    - assets/images/farmpedia.png
+    - assets/images/farmpedia_hd.png
+    - assets/images/person.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
