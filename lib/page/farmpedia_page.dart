@@ -20,6 +20,18 @@ class _FarmPediaPageState extends ConsumerState<FarmPediaPage> {
     super.dispose();
   }
 
+  int currentIndexFilter = 0;
+
+  final List<String> filterList = [
+    'All',
+    'Stories',
+    'Scientific',
+    'Beginner',
+    'Tips',
+    'Low Budget',
+    'Innovation'
+  ];
+
   @override
   Widget build(BuildContext context) {
     final widthScreen = MediaQuery.of(context).size.width;
@@ -49,6 +61,47 @@ class _FarmPediaPageState extends ConsumerState<FarmPediaPage> {
               height: 22,
             ),
             const TitleComponent(title: 'For You'),
+            SizedBox(
+              height: 45,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 7,
+                itemBuilder: (context, index) => GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      currentIndexFilter = index;
+                    });
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 2, horizontal: 20),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 1,
+                          color: const Color.fromARGB(255, 5, 130, 64),
+                        ),
+                        borderRadius: BorderRadius.circular(40),
+                        gradient: (currentIndexFilter == index)
+                            ? const LinearGradient(
+                                colors: [
+                                  Color.fromARGB(255, 5, 130, 64),
+                                  Color.fromARGB(255, 122, 173, 82)
+                                ],
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight,
+                              )
+                            : null),
+                    child: Center(
+                      child: Text(
+                        filterList[index],
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
             const FarmPediaContent(
                 type: 'Content',
                 title: 'Pak Luis si Pembajak Handal Trenggalek',
