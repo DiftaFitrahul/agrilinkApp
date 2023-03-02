@@ -69,7 +69,7 @@ class CarouserlSliderPage extends ConsumerWidget {
       items: dataWidget,
       options: CarouselOptions(
           enlargeFactor: 0.34,
-          height: 280,
+          height: 260,
           enlargeCenterPage: true,
           autoPlay: true),
     );
