@@ -61,6 +61,9 @@ class _FarmPediaPageState extends ConsumerState<FarmPediaPage> {
               height: 22,
             ),
             const TitleComponent(title: 'For You'),
+            const SizedBox(
+              height: 10,
+            ),
             SizedBox(
               height: 45,
               child: ListView.builder(
@@ -73,7 +76,7 @@ class _FarmPediaPageState extends ConsumerState<FarmPediaPage> {
                     });
                   },
                   child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
                     padding:
                         const EdgeInsets.symmetric(vertical: 2, horizontal: 20),
                     decoration: BoxDecoration(
