@@ -71,7 +71,7 @@ class _SecondSplashScreenState extends State<SecondSplashScreen>
                 child: FadeTransition(
                   opacity: _animation,
                   child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 1800),
+                    duration: const Duration(milliseconds: 1200),
                     alignment: Alignment(0, size ? -9.5 : 0),
                     width: size ? 140 : 170,
                     height: size ? 140 : 170,

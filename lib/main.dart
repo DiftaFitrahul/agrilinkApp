@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gdsc_project/page/auth_checker.dart';
+import 'package:gdsc_project/page/bottomnavigation_bar.dart';
 import 'package:gdsc_project/page/loginpage/loginpage.dart';
 import 'package:gdsc_project/page/registerPage/letus.dart';
 import 'package:gdsc_project/page/registerPage/silderIntro_page.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
       theme:
           ThemeData(scaffoldBackgroundColor: Color.fromARGB(255, 135, 193, 89)),
       debugShowCheckedModeBanner: false,
-      home: const AuthChecker(),
+      home: const BottomNavigationBarPage(),
     );
   }
 }

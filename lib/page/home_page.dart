@@ -3,38 +3,51 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gdsc_project/page/auth_checker.dart';
+import 'package:gdsc_project/page/farmpedia_page.dart';
+import 'package:gdsc_project/page/forums_page.dart';
+import 'package:gdsc_project/page/market_page.dart';
+import 'package:gdsc_project/page/settings_page.dart';
 import 'package:gdsc_project/provider/auth_provider/auth_provider.dart';
 
-class HomePage extends ConsumerWidget {
-  HomePage({super.key});
+class HomePage extends ConsumerStatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  ConsumerState<ConsumerStatefulWidget> createState() => _HomePageState();
+}
+
+class _HomePageState extends ConsumerState<HomePage> {
   final _searchController = TextEditingController();
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final widthScreen = MediaQuery.of(context).size.width;
+    final heightScreen = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(
-            //mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
                 children: [
                   Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.all(2),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20)),
-                      child: TextField(
-                        controller: _searchController,
-                        decoration: const InputDecoration(
-                            hintText: 'Search',
-                            border: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.red),
-                            ),
-                            prefixIcon: Icon(Icons.search_rounded)),
-                      ),
+                    child: TextField(
+                      controller: _searchController,
+                      decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.all(10),
+                          filled: true,
+                          fillColor: Colors.white,
+                          hintText: 'Search',
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15)),
+                          prefixIcon: Icon(Icons.search_rounded)),
                     ),
                   ),
                   const SizedBox(
@@ -54,7 +67,7 @@ class HomePage extends ConsumerWidget {
               Stack(
                 children: [
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.25,
+                    height: MediaQuery.of(context).size.height * 0.20,
                     decoration: BoxDecoration(
                         color: const Color.fromARGB(255, 5, 130, 64),
                         borderRadius: BorderRadius.circular(12)),
@@ -158,6 +171,32 @@ class HomePage extends ConsumerWidget {
                   ),
                 ),
               ]),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                child: InkWell(
+                  onTap: () {},
+                  child: Stack(
+                    children: [
+                      Center(
+                          child: SizedBox(
+                        height: heightScreen * 0.3,
+                        width: widthScreen * 0.9,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.asset(
+                            'assets/images/farm-1.png',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      )),
+                      Positioned(
+                        
+                        
+                        child: const Text('Want to know more about farm?'))
+                    ],
+                  ),
+                ),
+              ),
               ElevatedButton(
                   onPressed: () {
                     ref.read(authProvider).signOut().then((_) {
