@@ -60,10 +60,6 @@ class _FarmPediaPageState extends ConsumerState<FarmPediaPage> {
             const SizedBox(
               height: 22,
             ),
-            const TitleComponent(title: 'For You'),
-            const SizedBox(
-              height: 10,
-            ),
             SizedBox(
               height: 45,
               child: ListView.builder(

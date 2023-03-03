@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gdsc_project/page/home_page.dart';
 import 'package:gdsc_project/provider/auth_provider/auth_provider.dart';
+import 'package:http/http.dart' as http;
 
 class LoginPage extends ConsumerStatefulWidget {
   LoginPage({super.key});
@@ -21,6 +24,29 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
   final _confirmPasswordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  void toJson(String email, String password) async {
+    print('================================');
+    Map<String, dynamic> toJson = {
+      'email': email,
+      'password': password,
+    };
+
+    try {
+      final response = await http.post(
+          Uri.parse('https://agrilink-backend.vercel.app/auth/login'),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+          body: jsonEncode(toJson));
+      print('================================');
+
+      print(response.body.toString());
+      print('================================');
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 
   @override
   void dispose() {
@@ -136,7 +162,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                           color: Colors.white.withOpacity(0.7),
                         )),
                     validator: (value) {
-                      if (value!.length < 9) {
+                      if (value!.length < 8) {
                         return 'password at least 9 characters';
                       } else {
                         return null;
@@ -218,48 +244,54 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                               return;
                             }
                             signUp
-                                ? ref
-                                    .read(authStateProvider.notifier)
-                                    .signUp(_emailController.text,
-                                        _confirmPasswordController.text)
-                                    .then((value) {
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => HomePage(),
-                                        ));
+                                ? {
                                     ref
                                         .read(authStateProvider.notifier)
-                                        .changeState();
-                                  }).catchError((e) {
-                                    ScaffoldMessenger.of(context)
-                                      ..removeCurrentSnackBar()
-                                      ..showSnackBar(SnackBar(
-                                          content: Text(e.toString())));
+                                        .signUp(_emailController.text,
+                                            _confirmPasswordController.text)
+                                        .then((value) {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => HomePage(),
+                                          ));
+                                      ref
+                                          .read(authStateProvider.notifier)
+                                          .changeState();
+                                    }).catchError((e) {
+                                      ScaffoldMessenger.of(context)
+                                        ..removeCurrentSnackBar()
+                                        ..showSnackBar(SnackBar(
+                                            content: Text(e.toString())));
 
-                                    return;
-                                  })
-                                : ref
-                                    .read(authStateProvider.notifier)
-                                    .signIn(_emailController.text,
+                                      return;
+                                    }),
+                                  }
+                                : {
+                                    ref
+                                        .read(authStateProvider.notifier)
+                                        .signIn(_emailController.text,
+                                            _passwordController.text)
+                                        .then((value) {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => HomePage(),
+                                          ));
+                                      ref
+                                          .read(authStateProvider.notifier)
+                                          .changeState();
+                                    }).catchError((e) {
+                                      ScaffoldMessenger.of(context)
+                                        ..removeCurrentSnackBar()
+                                        ..showSnackBar(SnackBar(
+                                            content: Text(e.toString())));
+
+                                      return;
+                                    }),
+                                    toJson(_emailController.text,
                                         _passwordController.text)
-                                    .then((value) {
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => HomePage(),
-                                        ));
-                                    ref
-                                        .read(authStateProvider.notifier)
-                                        .changeState();
-                                  }).catchError((e) {
-                                    ScaffoldMessenger.of(context)
-                                      ..removeCurrentSnackBar()
-                                      ..showSnackBar(SnackBar(
-                                          content: Text(e.toString())));
-
-                                    return;
-                                  });
+                                  };
                           },
                           child: Container(
                             width: double.infinity,

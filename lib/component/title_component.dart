@@ -10,7 +10,7 @@ class TitleComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     final widthScreen = MediaQuery.of(context).size.width;
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 15),
+      margin: const EdgeInsets.symmetric(vertical: 10),
       width: widthScreen * 0.6,
       height: 55,
       decoration: BoxDecoration(

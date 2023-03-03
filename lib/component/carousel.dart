@@ -65,13 +65,16 @@ class CarouserlSliderPage extends ConsumerWidget {
         ]),
       ),
     ];
-    return CarouselSlider(
-      items: dataWidget,
-      options: CarouselOptions(
-          enlargeFactor: 0.34,
-          height: 260,
-          enlargeCenterPage: true,
-          autoPlay: true),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: CarouselSlider(
+        items: dataWidget,
+        options: CarouselOptions(
+            enlargeFactor: 0.34,
+            height: 260,
+            enlargeCenterPage: true,
+            autoPlay: true),
+      ),
     );
   }
 }
