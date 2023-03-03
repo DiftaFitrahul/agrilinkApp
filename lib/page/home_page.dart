@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gdsc_project/page/account_page.dart';
 import 'package:gdsc_project/page/auth_checker.dart';
 import 'package:gdsc_project/page/farmpedia_page.dart';
 import 'package:gdsc_project/page/forums_page.dart';
@@ -55,11 +56,24 @@ class _HomePageState extends ConsumerState<HomePage> {
                       width: 12,
                     ),
                     Container(
+                        width: 50,
+                        height: 50,
                         decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(20)),
+                            borderRadius: BorderRadius.circular(25)),
                         child: IconButton(
-                            onPressed: () {}, icon: const Icon(Icons.person)))
+                            padding: EdgeInsets.zero,
+                            constraints: BoxConstraints(),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (ctx) => AccountPage()));
+                            },
+                            icon: Image.asset(
+                              'assets/images/accountUser.png',
+                              fit: BoxFit.fill,
+                            )))
                   ],
                 ),
                 const SizedBox(
@@ -183,14 +197,14 @@ class _HomePageState extends ConsumerState<HomePage> {
                           IconButton(
                               onPressed: () {},
                               icon: const Icon(
-                                Icons.monetization_on_outlined,
+                                Icons.store,
                                 color: Colors.white,
                                 size: 33,
                               )),
                           const SizedBox(
                             height: 2,
                           ),
-                          const Text('Sell',
+                          const Text('Market',
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.w600))

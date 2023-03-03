@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gdsc_project/page/account_page.dart';
 import 'package:gdsc_project/page/auth_checker.dart';
 import 'package:gdsc_project/page/bottomnavigation_bar.dart';
 import 'package:gdsc_project/page/loginpage/loginpage.dart';

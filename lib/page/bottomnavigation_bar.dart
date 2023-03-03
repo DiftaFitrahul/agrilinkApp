@@ -44,8 +44,7 @@ class _BottomNavigationBartState
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
             BottomNavigationBarItem(
                 icon: Icon(Icons.person), label: 'Farmpedia'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_cart), label: 'Market'),
+            BottomNavigationBarItem(icon: Icon(Icons.store), label: 'Market'),
             BottomNavigationBarItem(icon: Icon(Icons.forum), label: 'Forums'),
             BottomNavigationBarItem(
                 icon: Icon(Icons.settings), label: 'Settings')
