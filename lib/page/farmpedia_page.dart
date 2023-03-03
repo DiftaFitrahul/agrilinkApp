@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gdsc_project/component/carousel.dart';
 import 'package:gdsc_project/component/farmpedia_content.dart';
+import 'package:gdsc_project/component/filter_component.dart';
 import 'package:gdsc_project/component/title_component.dart';
 
 class FarmPediaPage extends ConsumerStatefulWidget {
@@ -19,8 +20,6 @@ class _FarmPediaPageState extends ConsumerState<FarmPediaPage> {
     _searchController.dispose();
     super.dispose();
   }
-
-  int currentIndexFilter = 0;
 
   final List<String> filterList = [
     'All',
@@ -60,47 +59,7 @@ class _FarmPediaPageState extends ConsumerState<FarmPediaPage> {
             const SizedBox(
               height: 22,
             ),
-            SizedBox(
-              height: 45,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 7,
-                itemBuilder: (context, index) => GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      currentIndexFilter = index;
-                    });
-                  },
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 10),
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 2, horizontal: 20),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 1,
-                          color: const Color.fromARGB(255, 5, 130, 64),
-                        ),
-                        borderRadius: BorderRadius.circular(40),
-                        gradient: (currentIndexFilter == index)
-                            ? const LinearGradient(
-                                colors: [
-                                  Color.fromARGB(255, 5, 130, 64),
-                                  Color.fromARGB(255, 122, 173, 82)
-                                ],
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                              )
-                            : null),
-                    child: Center(
-                      child: Text(
-                        filterList[index],
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            FilterComponent(filterList: filterList),
             const FarmPediaContent(
                 type: 'Content',
                 title: 'Pak Luis si Pembajak Handal Trenggalek',

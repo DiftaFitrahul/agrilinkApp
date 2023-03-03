@@ -1,6 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gdsc_project/component/filter_component.dart';
+import 'package:gdsc_project/component/sell_item_component.dart';
 import 'package:gdsc_project/component/title_component.dart';
 
 class MarketPage extends ConsumerStatefulWidget {
@@ -13,9 +15,15 @@ class MarketPage extends ConsumerStatefulWidget {
 class _MarketPageState extends ConsumerState<MarketPage> {
   final _searchController = TextEditingController();
 
+  
   List<String> dayHargaPasar = ['1 hr', '3 hr', '7 hr', '14 hr'];
   int dayHargaPasarIsSelected = 0;
   String dropdownValue = 'Basmati';
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -239,7 +247,9 @@ class _MarketPageState extends ConsumerState<MarketPage> {
                       ],
                     ),
                   ))
-            ])
+            ]),
+            
+            
           ],
         )),
       ),

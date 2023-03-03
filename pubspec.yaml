@@ -88,6 +88,7 @@ flutter:
     - assets/images/farmpedia.png
     - assets/images/farmpedia_hd.png
     - assets/images/person.png
+    - assets/images/rice.png
     - assets/images/farmpedia_content.png
 
   # An image asset can refer to one or more resolution-specific "variants", see

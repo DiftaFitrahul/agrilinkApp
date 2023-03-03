@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gdsc_project/page/auth_checker.dart';
 import 'package:gdsc_project/page/farmpedia_page.dart';
 import 'package:gdsc_project/page/forums_page.dart';
-import 'package:gdsc_project/page/market_page.dart';
+import 'package:gdsc_project/page/market_page_seller.dart';
 import 'package:gdsc_project/page/settings_page.dart';
 import 'package:gdsc_project/provider/auth_provider/auth_provider.dart';
 
