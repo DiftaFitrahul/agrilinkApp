@@ -5,6 +5,7 @@ import 'package:gdsc_project/page/account_page.dart';
 import 'package:gdsc_project/page/auth_checker.dart';
 import 'package:gdsc_project/page/bottomnavigation_bar.dart';
 import 'package:gdsc_project/page/loginpage/loginpage.dart';
+import 'package:gdsc_project/page/item_buyer_page.dart';
 import 'package:gdsc_project/page/registerPage/letus.dart';
 import 'package:gdsc_project/page/registerPage/silderIntro_page.dart';
 import 'package:gdsc_project/page/splash-screen/first_splashscreen.dart';

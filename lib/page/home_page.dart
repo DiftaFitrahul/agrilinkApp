@@ -282,17 +282,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                     ),
                   ),
                 ),
-                ElevatedButton(
-                    onPressed: () {
-                      ref.read(authProvider).signOut().then((_) {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const AuthChecker(),
-                            ));
-                      });
-                    },
-                    child: const Text('Sign Out'))
+                
               ],
             ),
           ),

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gdsc_project/page/auth_checker.dart';
+
+import '../provider/auth_provider/auth_provider.dart';
 
 class AccountPage extends ConsumerWidget {
   AccountPage({super.key});
@@ -9,8 +12,72 @@ class AccountPage extends ConsumerWidget {
     'Artikel Tersimpan',
     'Metode Pembayaran',
     'Riwayat Transaksi',
-    'Help'
+    'Help',
+    'Customer Support',
+    'Sign Out'
   ];
+
+  List iconButton(BuildContext context, WidgetRef ref) {
+    return [
+      IconButton(
+        icon: const Icon(
+          Icons.star,
+          size: 30,
+        ),
+        onPressed: () {},
+      ),
+      IconButton(
+        icon: const Icon(
+          Icons.bookmark,
+          size: 30,
+        ),
+        onPressed: () {},
+      ),
+      IconButton(
+        icon: const Icon(
+          Icons.monetization_on,
+          size: 30,
+        ),
+        onPressed: () {},
+      ),
+      IconButton(
+        icon: const Icon(
+          Icons.history,
+          size: 30,
+        ),
+        onPressed: () {},
+      ),
+      IconButton(
+        icon: const Icon(
+          Icons.help,
+          size: 30,
+        ),
+        onPressed: () {},
+      ),
+      IconButton(
+        icon: const Icon(
+          Icons.support_agent_sharp,
+          size: 30,
+        ),
+        onPressed: () {},
+      ),
+      IconButton(
+        icon: const Icon(
+          Icons.logout_outlined,
+          size: 30,
+        ),
+        onPressed: () {
+          ref.read(authProvider).signOut().then((_) {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AuthChecker(),
+                ));
+          });
+        },
+      ),
+    ];
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -23,13 +90,19 @@ class AccountPage extends ConsumerWidget {
           padding: const EdgeInsets.symmetric(horizontal: 25),
           child: Column(
             children: [
-              Align(
-                alignment: Alignment.topLeft,
-                child: IconButton(
-                  icon: Icon(Icons.arrow_back),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      size: 30,
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
                 ),
               ),
               Row(
@@ -39,7 +112,7 @@ class AccountPage extends ConsumerWidget {
                     'assets/images/accountUser.png',
                     width: 90,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 18,
                   ),
                   SizedBox(
@@ -116,13 +189,13 @@ class AccountPage extends ConsumerWidget {
                     padding: const EdgeInsets.symmetric(vertical: 15),
                     child: Row(
                       children: [
-                        Icon(Icons.book),
-                        SizedBox(
+                        iconButton(context, ref)[index],
+                        const SizedBox(
                           width: 20,
                         ),
                         Text(
                           settingList[index],
-                          style: TextStyle(fontSize: 20),
+                          style: const TextStyle(fontSize: 20),
                         ),
                       ],
                     ),
