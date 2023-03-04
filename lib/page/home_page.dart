@@ -92,7 +92,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                         left: 15,
                         top: 15,
                         bottom: 15,
-                        right: MediaQuery.of(context).size.width * 0.45,
+                        right: MediaQuery.of(context).size.width * 0.36,
                         child: Container(
                           height: 20,
                           decoration: BoxDecoration(
@@ -104,12 +104,12 @@ class _HomePageState extends ConsumerState<HomePage> {
                       top: 15,
                       bottom: 15,
                       child: SizedBox(
-                        width: widthScreen * 0.36,
+                        width: widthScreen * 0.26,
                         height: heightScreen * 0.15,
                         child: GridView.builder(
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
+                                  crossAxisCount: 1,
                                   mainAxisSpacing: 20,
                                   crossAxisSpacing: 15,
                                   mainAxisExtent: 53),
@@ -214,16 +214,23 @@ class _HomePageState extends ConsumerState<HomePage> {
                     ),
                   ),
                 ]),
-                const HomePageContent(
+                HomePageContent(
                   title: 'Mau tahu lebih banyak tentang bertani',
                   imagePath: 'assets/images/farm-1.png',
                   buttonTitle: 'Farmpedia',
+                  goToPage: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (ctx) => const FarmPediaPage()));
+                  },
                 ),
-                const HomePageContent(
+                HomePageContent(
                   title:
                       'Mau beli beras sesuai budget dan kualitas yang diinginkan?',
                   imagePath: 'assets/images/farm-2.png',
                   buttonTitle: 'Sudah Waktunya ke Market',
+                  goToPage: () {},
                 )
               ],
             ),

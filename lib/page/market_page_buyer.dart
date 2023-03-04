@@ -60,7 +60,7 @@ class _MarketPageBuyerState extends ConsumerState<MarketPageBuyer> {
                     mainAxisExtent: 210),
                 padding: const EdgeInsets.all(12),
                 itemCount: 22,
-                itemBuilder: (context, index) => SellItemComponent(
+                itemBuilder: (context, index) => const SellItemComponent(
                     imagePath: 'assets/images/rice.png',
                     price: '12.350',
                     riceName: 'Menthik',

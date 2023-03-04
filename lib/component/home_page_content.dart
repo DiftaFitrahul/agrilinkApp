@@ -5,11 +5,14 @@ class HomePageContent extends ConsumerWidget {
   final String title;
   final String imagePath;
   final String buttonTitle;
+  final void Function() goToPage;
   const HomePageContent(
       {super.key,
       required this.title,
       required this.imagePath,
-      required this.buttonTitle});
+      required this.buttonTitle,
+      required this.goToPage
+      });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -59,7 +62,7 @@ class HomePageContent extends ConsumerWidget {
               bottom: 20,
               left: 50,
               child: InkWell(
-                onTap: () {},
+                onTap: goToPage,
                 child: Container(
                   padding:
                       const EdgeInsets.symmetric(vertical: 7, horizontal: 12),
