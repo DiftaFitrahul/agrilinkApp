@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gdsc_project/component/home_page_content.dart';
 import 'package:gdsc_project/page/account_page.dart';
 import 'package:gdsc_project/page/auth_checker.dart';
 import 'package:gdsc_project/page/farmpedia_page.dart';
@@ -213,76 +214,17 @@ class _HomePageState extends ConsumerState<HomePage> {
                     ),
                   ),
                 ]),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  child: InkWell(
-                    onTap: () {},
-                    child: Stack(
-                      children: [
-                        Center(
-                            child: SizedBox(
-                          height: heightScreen * 0.3,
-                          width: widthScreen * 0.9,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image.asset(
-                              'assets/images/farm-1.png',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        )),
-                        Center(
-                          child: Container(
-                            height: heightScreen * 0.3,
-                            width: widthScreen * 0.9,
-                            decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                    colors: [
-                                      Colors.black.withOpacity(0.6),
-                                      Colors.transparent
-                                    ],
-                                    begin: Alignment.centerLeft,
-                                    end: Alignment.centerRight),
-                                borderRadius: BorderRadius.circular(20)),
-                          ),
-                        ),
-                        const Positioned(
-                            top: 20,
-                            left: 50,
-                            child: Text('Want to know more about farm?',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 17))),
-                        Positioned(
-                          bottom: 20,
-                          left: 50,
-                          child: InkWell(
-                            onTap: () {},
-                            child: Container(
-                              width: 130,
-                              padding: const EdgeInsets.all(7),
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text('Farmpedia',
-                                      style:
-                                          TextStyle(color: Colors.green[800])),
-                                  Icon(
-                                    Icons.arrow_forward,
-                                    color: Colors.green[800],
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+                const HomePageContent(
+                  title: 'Mau tahu lebih banyak tentang bertani',
+                  imagePath: 'assets/images/farm-1.png',
+                  buttonTitle: 'Farmpedia',
                 ),
-                
+                const HomePageContent(
+                  title:
+                      'Mau beli beras sesuai budget dan kualitas yang diinginkan?',
+                  imagePath: 'assets/images/farm-2.png',
+                  buttonTitle: 'Sudah Waktunya ke Market',
+                )
               ],
             ),
           ),
