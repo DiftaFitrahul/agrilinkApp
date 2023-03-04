@@ -8,6 +8,7 @@ import 'package:gdsc_project/page/forum_page_discussion.dart';
 import 'package:gdsc_project/page/loginpage/loginpage.dart';
 import 'package:gdsc_project/page/item_buyer_page.dart';
 import 'package:gdsc_project/page/registerPage/letus.dart';
+import 'package:gdsc_project/page/registerPage/register.dart';
 import 'package:gdsc_project/page/registerPage/silderIntro_page.dart';
 import 'package:gdsc_project/page/splash-screen/first_splashscreen.dart';
 import 'package:gdsc_project/firebase_options.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
       theme:
           ThemeData(scaffoldBackgroundColor: Color.fromARGB(255, 135, 193, 89)),
       debugShowCheckedModeBanner: false,
-      home: BottomNavigationBarPage(),
+      home: RegisterPageScreen(),
     );
   }
 }

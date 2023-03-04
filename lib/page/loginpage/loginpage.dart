@@ -163,7 +163,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                         )),
                     validator: (value) {
                       if (value!.length < 8) {
-                        return 'password at least 9 characters';
+                        return 'password at least 8 characters';
                       } else {
                         return null;
                       }
