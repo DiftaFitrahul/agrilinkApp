@@ -17,7 +17,7 @@ class SliderWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(title),
+        Text(title, style: TextStyle(color: Colors.white)),
         const SizedBox(
           height: 10,
         ),
@@ -29,6 +29,8 @@ class SliderWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 60),
           child: Text(
             description,
+            style: TextStyle(color: Colors.white),
+            textAlign: TextAlign.center,
             maxLines: 5,
             overflow: TextOverflow.ellipsis,
           ),

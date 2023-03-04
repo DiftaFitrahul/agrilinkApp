@@ -17,17 +17,16 @@ class _SliderPageState extends State<SliderIntroPage> {
 
   final List<Widget> pages = [
     const SliderWidget(
-        title: 'title',
-        description: 'description',
+        title: "It's time to start your journey with us",
+        description: 'Monitor your farm in real time. Forget the hassle',
         imagePath: 'assets/images/monitoring.png'),
     const SliderWidget(
-        title: 'makan',
-        description: 'description',
+        title: "It's time to start your journey with us",
+        description: 'Monitor your farm in real time. Forget the hassle',
         imagePath: 'assets/images/monitoring.png'),
     const SliderWidget(
-        title: 'nasi',
-        description:
-            'description about makan nasi padang di rumahnya teman saya yang bernama tidak tahu',
+        title: "It's time to start your journey with us",
+        description: 'Monitor your farm in real time. Forget the hassle',
         imagePath: 'assets/images/monitoring.png'),
   ];
 

@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       theme:
           ThemeData(scaffoldBackgroundColor: Color.fromARGB(255, 135, 193, 89)),
       debugShowCheckedModeBanner: false,
-      home: RegisterPageScreen(),
+      home: AuthChecker(),
     );
   }
 }

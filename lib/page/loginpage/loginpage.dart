@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gdsc_project/page/bottomnavigation_bar.dart';
 import 'package:gdsc_project/page/home_page.dart';
+import 'package:gdsc_project/page/registerPage/letus.dart';
 import 'package:gdsc_project/provider/auth_provider/auth_provider.dart';
 import 'package:http/http.dart' as http;
 
@@ -16,8 +18,6 @@ class LoginPage extends ConsumerStatefulWidget {
 }
 
 class _LoginPageState extends ConsumerState<LoginPage> {
-  bool signUp = false;
-
   final _emailController = TextEditingController();
 
   final _passwordController = TextEditingController();
@@ -81,14 +81,13 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  if (signUp == false)
-                    Text(
-                      'Welcome Back!',
-                      style: TextStyle(
-                          fontSize: 30,
-                          color: green2,
-                          fontWeight: FontWeight.bold),
-                    ),
+                  Text(
+                    'Welcome Back!',
+                    style: TextStyle(
+                        fontSize: 30,
+                        color: green2,
+                        fontWeight: FontWeight.bold),
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
@@ -169,73 +168,20 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       }
                     },
                   ),
-                  if (signUp == true)
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        bottom: 30,
-                      ),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: Align(
-                                alignment: Alignment.topLeft,
-                                child: Text(
-                                  'confirm password',
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      color: green2,
-                                      fontWeight: FontWeight.w500),
-                                )),
-                          ),
-                          TextFormField(
-                            controller: _confirmPasswordController,
-                            obscureText: true,
-                            style: const TextStyle(color: Colors.white),
-                            decoration: InputDecoration(
-                                contentPadding: const EdgeInsets.all(10),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(6)),
-                                hintText: 'confirm password',
-                                hintStyle: TextStyle(
-                                    color: Colors.white.withOpacity(0.7)),
-                                filled: true,
-                                fillColor: green2,
-                                prefixIcon: Icon(
-                                  Icons.vpn_key_rounded,
-                                  color: Colors.white.withOpacity(0.7),
-                                ),
-                                suffixIcon: Icon(
-                                  Icons.remove_red_eye_outlined,
-                                  color: Colors.white.withOpacity(0.7),
-                                )),
-                            validator: (value) {
-                              if (value != _passwordController.text) {
-                                return 'password is not same';
-                              } else {
-                                return null;
-                              }
-                            },
-                          ),
-                        ],
-                      ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8, top: 4, bottom: 28),
+                    child: InkWell(
+                      onTap: () {},
+                      child: Align(
+                          alignment: Alignment.topLeft,
+                          child: Text('Forgot password?',
+                              style: TextStyle(
+                                  fontSize: 13,
+                                  color: green2,
+                                  fontWeight: FontWeight.w500,
+                                  decoration: TextDecoration.underline))),
                     ),
-                  if (signUp == false)
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(left: 8, top: 4, bottom: 28),
-                      child: InkWell(
-                        onTap: () {},
-                        child: Align(
-                            alignment: Alignment.topLeft,
-                            child: Text('Forgot password?',
-                                style: TextStyle(
-                                    fontSize: 13,
-                                    color: green2,
-                                    fontWeight: FontWeight.w500,
-                                    decoration: TextDecoration.underline))),
-                      ),
-                    ),
+                  ),
                   authState
                       ? const CircularProgressIndicator()
                       : InkWell(
@@ -243,55 +189,31 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                             if (!_formKey.currentState!.validate()) {
                               return;
                             }
-                            signUp
-                                ? {
-                                    ref
-                                        .read(authStateProvider.notifier)
-                                        .signUp(_emailController.text,
-                                            _confirmPasswordController.text)
-                                        .then((value) {
-                                      Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => HomePage(),
-                                          ));
-                                      ref
-                                          .read(authStateProvider.notifier)
-                                          .changeState();
-                                    }).catchError((e) {
-                                      ScaffoldMessenger.of(context)
-                                        ..removeCurrentSnackBar()
-                                        ..showSnackBar(SnackBar(
-                                            content: Text(e.toString())));
 
-                                      return;
-                                    }),
-                                  }
-                                : {
-                                    ref
-                                        .read(authStateProvider.notifier)
-                                        .signIn(_emailController.text,
-                                            _passwordController.text)
-                                        .then((value) {
-                                      Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => HomePage(),
-                                          ));
-                                      ref
-                                          .read(authStateProvider.notifier)
-                                          .changeState();
-                                    }).catchError((e) {
-                                      ScaffoldMessenger.of(context)
-                                        ..removeCurrentSnackBar()
-                                        ..showSnackBar(SnackBar(
-                                            content: Text(e.toString())));
+                            ref
+                                .read(authStateProvider.notifier)
+                                .signIn(_emailController.text,
+                                    _passwordController.text)
+                                .then((value) {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const BottomNavigationBarPage(),
+                                  ));
+                              ref
+                                  .read(authStateProvider.notifier)
+                                  .changeState();
+                            }).catchError((e) {
+                              ScaffoldMessenger.of(context)
+                                ..removeCurrentSnackBar()
+                                ..showSnackBar(
+                                    SnackBar(content: Text(e.toString())));
 
-                                      return;
-                                    }),
-                                    toJson(_emailController.text,
-                                        _passwordController.text)
-                                  };
+                              return;
+                            });
+                            toJson(_emailController.text,
+                                _passwordController.text);
                           },
                           child: Container(
                             width: double.infinity,
@@ -299,10 +221,10 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                             decoration: BoxDecoration(
                                 color: green1,
                                 borderRadius: BorderRadius.circular(12)),
-                            child: Center(
+                            child: const Center(
                                 child: Text(
-                              signUp ? 'Sign Up' : 'Login',
-                              style: const TextStyle(
+                              'Login',
+                              style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 28,
                                   fontWeight: FontWeight.bold),
@@ -345,7 +267,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => HomePage(),
+                                    builder: (context) =>
+                                        const BottomNavigationBarPage(),
                                   ));
                               ref
                                   .read(authStateProvider.notifier)
@@ -375,19 +298,17 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                          signUp
-                              ? "Already have account? "
-                              : "Don't have account?",
-                          style: const TextStyle(fontSize: 13)),
+                      const Text("Don't have account?",
+                          style: TextStyle(fontSize: 13)),
                       TextButton(
                           onPressed: () {
-                            setState(() {
-                              signUp = !signUp;
-                            });
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (ctx) => const Register()));
                           },
-                          child: Text(signUp ? 'Sign In' : 'Sign Up',
-                              style: const TextStyle(fontSize: 13)))
+                          child: const Text('Sign Up',
+                              style: TextStyle(fontSize: 13)))
                     ],
                   )
                 ],

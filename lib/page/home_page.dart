@@ -27,6 +27,8 @@ class _HomePageState extends ConsumerState<HomePage> {
     super.dispose();
   }
 
+  List<String> typeGrid = ['Beli Beras', 'Ganti Peran'];
+
   @override
   Widget build(BuildContext context) {
     final widthScreen = MediaQuery.of(context).size.width;
@@ -83,7 +85,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                 Stack(
                   children: [
                     Container(
-                      height: MediaQuery.of(context).size.height * 0.19,
+                      height: 200,
                       decoration: BoxDecoration(
                           color: const Color.fromARGB(255, 5, 130, 64),
                           borderRadius: BorderRadius.circular(12)),
@@ -94,17 +96,55 @@ class _HomePageState extends ConsumerState<HomePage> {
                         bottom: 15,
                         right: MediaQuery.of(context).size.width * 0.36,
                         child: Container(
-                          height: 20,
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(12)),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 12.0, horizontal: 17),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'AgriPoints',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18),
+                                ),
+                                const SizedBox(
+                                  height: 9,
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 10, horizontal: 18),
+                                  decoration: BoxDecoration(
+                                      color:
+                                          const Color.fromARGB(255, 5, 130, 64),
+                                      borderRadius: BorderRadius.circular(12)),
+                                  child: const Text('2030 Pts',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 26)),
+                                ),
+                                const SizedBox(
+                                  height: 9,
+                                ),
+                                const Text(
+                                  'Sampai 23 Feb 2024',
+                                  style: TextStyle(
+                                      color: Colors.black87, fontSize: 13),
+                                ),
+                              ],
+                            ),
+                          ),
                         )),
                     Positioned(
                       right: 15,
                       top: 15,
                       bottom: 15,
                       child: SizedBox(
-                        width: widthScreen * 0.26,
+                        width: widthScreen * 0.27,
                         height: heightScreen * 0.15,
                         child: GridView.builder(
                           gridDelegate:
@@ -112,16 +152,23 @@ class _HomePageState extends ConsumerState<HomePage> {
                                   crossAxisCount: 1,
                                   mainAxisSpacing: 20,
                                   crossAxisSpacing: 15,
-                                  mainAxisExtent: 53),
-                          itemCount: 4,
+                                  mainAxisExtent: 60),
+                          itemCount: typeGrid.length,
                           itemBuilder: (context, index) => InkWell(
                               onTap: () {},
                               child: Container(
                                 width: 20,
                                 height: 45,
+                                alignment: Alignment.center,
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(12)),
+                                child: Text(
+                                  typeGrid[index],
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 16),
+                                ),
                               )),
                         ),
                       ),
@@ -196,7 +243,12 @@ class _HomePageState extends ConsumerState<HomePage> {
                         ]),
                         Column(children: [
                           IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (ctx) => MarketPageSeller()));
+                              },
                               icon: const Icon(
                                 Icons.store,
                                 color: Colors.white,

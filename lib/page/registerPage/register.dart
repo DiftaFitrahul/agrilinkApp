@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gdsc_project/page/bottomnavigation_bar.dart';
+import 'package:gdsc_project/page/loginpage/loginpage.dart';
+import 'package:gdsc_project/page/registerPage/letus.dart';
+
+import '../../provider/auth_provider/auth_provider.dart';
 
 class RegisterPageScreen extends ConsumerStatefulWidget {
-  const RegisterPageScreen({super.key});
+  final String typeUser;
+  const RegisterPageScreen({super.key, required this.typeUser});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -27,12 +33,13 @@ class _RegisterPageScreenState extends ConsumerState<RegisterPageScreen> {
     _emailController.dispose();
     _confirmPasswordController.dispose();
     _passwordController.dispose();
-    _formKey.currentState!.dispose();
+    _formKey.currentState?.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final authState = ref.watch(authStateProvider);
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -44,17 +51,39 @@ class _RegisterPageScreenState extends ConsumerState<RegisterPageScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Padding(
+                Padding(
                   padding: EdgeInsets.symmetric(vertical: 20),
-                  child: Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Welcome!',
-                        style: TextStyle(
-                          fontSize: 30,
-                          color: Color.fromARGB(255, 5, 130, 64),
-                        ),
-                      )),
+                  child: Row(
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: IconButton(
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (ctx) => Register()));
+                            },
+                            icon: const Icon(Icons.arrow_back,
+                                color: Color.fromARGB(255, 5, 130, 64),
+                                size: 30)),
+                      ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.001,
+                      ),
+                      Align(
+                          alignment: Alignment.topCenter,
+                          child: Text(
+                            (widget.typeUser == 'farmer')
+                                ? 'Welcome! Farmer'
+                                : 'Welcome! Customer',
+                            style: const TextStyle(
+                              fontSize: 30,
+                              color: Color.fromARGB(255, 5, 130, 64),
+                            ),
+                          )),
+                    ],
+                  ),
                 ),
                 formWidget(
                     'First Name',
@@ -69,7 +98,7 @@ class _RegisterPageScreenState extends ConsumerState<RegisterPageScreen> {
                     ),
                     _firstNameController,
                     false, (value) {
-                  if (value!.length >= 3) {
+                  if ((value?.length ?? 3) >= 3) {
                     return null;
                   } else {
                     return 'value at least 3 characters';
@@ -88,7 +117,7 @@ class _RegisterPageScreenState extends ConsumerState<RegisterPageScreen> {
                     ),
                     _lastNameController,
                     false, (value) {
-                  if (value!.length >= 3) {
+                  if ((value?.length ?? 3) >= 3) {
                     return null;
                   } else {
                     return 'value at least 3 characters';
@@ -107,7 +136,7 @@ class _RegisterPageScreenState extends ConsumerState<RegisterPageScreen> {
                     ),
                     _usernameController,
                     false, (value) {
-                  if (value!.length >= 3) {
+                  if ((value?.length ?? 3) >= 3) {
                     return null;
                   } else {
                     return 'value at least 3 characters';
@@ -159,7 +188,7 @@ class _RegisterPageScreenState extends ConsumerState<RegisterPageScreen> {
                     ),
                     _passwordController,
                     true, (value) {
-                  if (value!.length >= 9) {
+                  if ((value?.length ?? 9) >= 9) {
                     return null;
                   } else {
                     return 'value at least 9 characters';
@@ -251,29 +280,50 @@ class _RegisterPageScreenState extends ConsumerState<RegisterPageScreen> {
                     ),
                   ],
                 ),
-                GestureDetector(
-                  onTap: () {
-                    if (!_formKey.currentState!.validate()) {
-                      return;
-                    }
-                  },
-                  child: Container(
-                    width: double.infinity,
-                    height: 80,
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.symmetric(horizontal: 40),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: const Color.fromARGB(255, 122, 173, 82)),
-                    child: const Text(
-                      'Register',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 27,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ),
+                authState
+                    ? const Center(child: CircularProgressIndicator())
+                    : GestureDetector(
+                        onTap: () {
+                          if (!_formKey.currentState!.validate()) {
+                            return;
+                          }
+                          ref
+                              .read(authStateProvider.notifier)
+                              .signUp(_emailController.text,
+                                  _confirmPasswordController.text)
+                              .then((value) {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LoginPage(),
+                                ));
+                            ref.read(authStateProvider.notifier).changeState();
+                          }).catchError((e) {
+                            ScaffoldMessenger.of(context)
+                              ..removeCurrentSnackBar()
+                              ..showSnackBar(
+                                  SnackBar(content: Text(e.toString())));
+
+                            return;
+                          });
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: 80,
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.symmetric(horizontal: 40),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: const Color.fromARGB(255, 122, 173, 82)),
+                          child: const Text(
+                            'Register',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 27,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
                 const SizedBox(
                   height: 40,
                 )

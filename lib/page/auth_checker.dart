@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gdsc_project/page/bottomnavigation_bar.dart';
 import 'package:gdsc_project/page/home_page.dart';
 import 'package:gdsc_project/page/loginpage/loginpage.dart';
 import 'package:gdsc_project/page/registerPage/letus.dart';
@@ -15,7 +16,7 @@ class AuthChecker extends ConsumerWidget {
     return userStatus.when(
       data: (user) {
         if (user != null) {
-          return HomePage();
+          return BottomNavigationBarPage();
         } else {
           return FirstSplashScreen();
         }

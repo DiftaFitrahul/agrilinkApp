@@ -44,7 +44,7 @@ class AuthStateProvider extends StateNotifier<bool> {
   }
 
   void changeState() {
-    Future.delayed(Duration(seconds: 2)).then((_) {
+    Future.delayed(const Duration(seconds: 1)).then((_) {
       state = false;
     });
   }

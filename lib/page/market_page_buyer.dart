@@ -27,6 +27,9 @@ class _MarketPageBuyerState extends ConsumerState<MarketPageBuyer> {
     super.dispose();
   }
 
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -5,14 +5,14 @@ import 'package:gdsc_project/component/filter_component.dart';
 import 'package:gdsc_project/component/sell_item_component.dart';
 import 'package:gdsc_project/component/title_component.dart';
 
-class MarketPage extends ConsumerStatefulWidget {
-  const MarketPage({super.key});
+class MarketPageSeller extends ConsumerStatefulWidget {
+  const MarketPageSeller({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _MarketPageState();
 }
 
-class _MarketPageState extends ConsumerState<MarketPage> {
+class _MarketPageState extends ConsumerState<MarketPageSeller> {
   final _searchController = TextEditingController();
 
   

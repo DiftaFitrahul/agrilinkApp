@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:gdsc_project/page/loginpage/loginpage.dart';
+import 'package:gdsc_project/page/registerPage/register.dart';
 
 class Register extends StatelessWidget {
   const Register({super.key});
@@ -33,7 +34,10 @@ class Register extends StatelessWidget {
               height: 20,
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (ctx) => RegisterPageScreen(typeUser: 'farmer',)));
+              },
               child: Container(
                 width: size.width * 0.8,
                 height: size.height * 0.17,
@@ -58,7 +62,10 @@ class Register extends StatelessWidget {
               height: 40,
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (ctx) => RegisterPageScreen(typeUser: 'customer',)));
+              },
               child: Container(
                 width: size.width * 0.8,
                 height: size.height * 0.17,
