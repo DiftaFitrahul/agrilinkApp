@@ -36,7 +36,7 @@ class Register extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (ctx) => RegisterPageScreen(typeUser: 'farmer',)));
+                    MaterialPageRoute(builder: (ctx) => const RegisterPageScreen(typeUser: 'seller',)));
               },
               child: Container(
                 width: size.width * 0.8,
@@ -64,7 +64,7 @@ class Register extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (ctx) => RegisterPageScreen(typeUser: 'customer',)));
+                    MaterialPageRoute(builder: (ctx) => const RegisterPageScreen(typeUser: 'buyer',)));
               },
               child: Container(
                 width: size.width * 0.8,

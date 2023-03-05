@@ -71,7 +71,7 @@ class AccountPage extends ConsumerWidget {
             Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const AuthChecker(),
+                  builder: (dialogcontext) => const AuthChecker(),
                 ));
           });
         },

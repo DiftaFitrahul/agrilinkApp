@@ -8,6 +8,7 @@ import 'package:gdsc_project/page/bottomnavigation_bar.dart';
 import 'package:gdsc_project/page/home_page.dart';
 import 'package:gdsc_project/page/registerPage/letus.dart';
 import 'package:gdsc_project/provider/auth_provider/auth_provider.dart';
+import 'package:gdsc_project/service/nodejs_service/signin_service.dart';
 import 'package:http/http.dart' as http;
 
 class LoginPage extends ConsumerStatefulWidget {
@@ -22,37 +23,13 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
   final _passwordController = TextEditingController();
 
-  final _confirmPasswordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-
-  void toJson(String email, String password) async {
-    print('================================');
-    Map<String, dynamic> toJson = {
-      'email': email,
-      'password': password,
-    };
-
-    try {
-      final response = await http.post(
-          Uri.parse('https://agrilink-backend.vercel.app/auth/login'),
-          headers: <String, String>{
-            'Content-Type': 'application/json; charset=UTF-8',
-          },
-          body: jsonEncode(toJson));
-      print('================================');
-
-      print(response.body.toString());
-      print('================================');
-    } catch (e) {
-      print(e.toString());
-    }
-  }
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
-    _confirmPasswordController.dispose();
+
     _formKey.currentState?.dispose();
     super.dispose();
   }
@@ -204,6 +181,10 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                               ref
                                   .read(authStateProvider.notifier)
                                   .changeState();
+                              ref
+                                  .read(signInAccountProvider.notifier)
+                                  .signInAccount(_emailController.text,
+                                      _passwordController.text);
                             }).catchError((e) {
                               ScaffoldMessenger.of(context)
                                 ..removeCurrentSnackBar()
@@ -212,8 +193,6 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
                               return;
                             });
-                            toJson(_emailController.text,
-                                _passwordController.text);
                           },
                           child: Container(
                             width: double.infinity,

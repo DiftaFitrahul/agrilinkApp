@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gdsc_project/page/bottomnavigation_bar.dart';
 import 'package:gdsc_project/page/loginpage/loginpage.dart';
 import 'package:gdsc_project/page/registerPage/letus.dart';
+import 'package:gdsc_project/service/nodejs_service/signup_service.dart';
 
 import '../../provider/auth_provider/auth_provider.dart';
 
@@ -52,17 +53,18 @@ class _RegisterPageScreenState extends ConsumerState<RegisterPageScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20),
+                  padding: const EdgeInsets.symmetric(vertical: 20),
                   child: Row(
                     children: [
                       Align(
                         alignment: Alignment.topLeft,
                         child: IconButton(
                             onPressed: () {
+                              FocusManager.instance.primaryFocus?.unfocus();
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (ctx) => Register()));
+                                      builder: (ctx) => const Register()));
                             },
                             icon: const Icon(Icons.arrow_back,
                                 color: Color.fromARGB(255, 5, 130, 64),
@@ -74,7 +76,7 @@ class _RegisterPageScreenState extends ConsumerState<RegisterPageScreen> {
                       Align(
                           alignment: Alignment.topCenter,
                           child: Text(
-                            (widget.typeUser == 'farmer')
+                            (widget.typeUser == 'seller')
                                 ? 'Welcome! Farmer'
                                 : 'Welcome! Customer',
                             style: const TextStyle(
@@ -188,16 +190,16 @@ class _RegisterPageScreenState extends ConsumerState<RegisterPageScreen> {
                     ),
                     _passwordController,
                     true, (value) {
-                  if ((value?.length ?? 9) >= 9) {
+                  if (value!.length >= 8) {
                     return null;
                   } else {
-                    return 'value at least 9 characters';
+                    return 'value at least 8 characters';
                   }
                 }),
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 12),
                   child: Text(
-                    'Password must be at least 9 characters long.',
+                    'Password must be at least 8 characters long.',
                     textAlign: TextAlign.justify,
                     style: TextStyle(
                       fontSize: 12,
@@ -298,6 +300,14 @@ class _RegisterPageScreenState extends ConsumerState<RegisterPageScreen> {
                                   builder: (context) => LoginPage(),
                                 ));
                             ref.read(authStateProvider.notifier).changeState();
+                            ref
+                                .read(registerAccountProvider.notifier)
+                                .registerAccount(
+                                    _emailController.text,
+                                    _confirmPasswordController.text,
+                                    _usernameController.text,
+                                    widget.typeUser);
+                            print(ref.watch(registerAccountProvider));
                           }).catchError((e) {
                             ScaffoldMessenger.of(context)
                               ..removeCurrentSnackBar()
