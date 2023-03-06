@@ -11,7 +11,7 @@ class ForumNewsComponent extends ConsumerWidget {
     return GestureDetector(
       onTap: () {
         Navigator.push(context,
-            MaterialPageRoute(builder: ((context) => ForumPageDiscussion())));
+            MaterialPageRoute(builder: ((context) => const ForumPageDiscussion())));
       },
       child: SizedBox(
         width: widthScreen * 0.85,

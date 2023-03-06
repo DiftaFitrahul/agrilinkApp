@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gdsc_project/page/bottomnavigation_bar.dart';
-import 'package:gdsc_project/page/loginpage/loginpage.dart';
-import 'package:gdsc_project/page/registerPage/letus.dart';
-import 'package:gdsc_project/service/nodejs_service/signup_service.dart';
 
+import '../../page/loginpage/loginpage.dart';
+import '../../page/registerPage/letus.dart';
+import '../../service/nodejs_service/signup_service.dart';
 import '../../provider/auth_provider/auth_provider.dart';
 
 class RegisterPageScreen extends ConsumerStatefulWidget {
@@ -145,7 +144,7 @@ class _RegisterPageScreenState extends ConsumerState<RegisterPageScreen> {
                   }
                 }),
                 const Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  padding:  EdgeInsets.symmetric(horizontal: 12),
                   child: Text(
                     'Username must be 3 - 16 characters. Only alphanumerical characters are allowed.',
                     textAlign: TextAlign.justify,
@@ -297,7 +296,7 @@ class _RegisterPageScreenState extends ConsumerState<RegisterPageScreen> {
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => LoginPage(),
+                                  builder: (context) => const LoginPage(),
                                 ));
                             ref.read(authStateProvider.notifier).changeState();
                             ref
@@ -307,7 +306,7 @@ class _RegisterPageScreenState extends ConsumerState<RegisterPageScreen> {
                                     _confirmPasswordController.text,
                                     _usernameController.text,
                                     widget.typeUser);
-                            print(ref.watch(registerAccountProvider));
+                          
                           }).catchError((e) {
                             ScaffoldMessenger.of(context)
                               ..removeCurrentSnackBar()

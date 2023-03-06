@@ -33,8 +33,6 @@ class _FarmPediaPageState extends ConsumerState<FarmPediaPage> {
 
   @override
   Widget build(BuildContext context) {
-    final widthScreen = MediaQuery.of(context).size.width;
-    final heightScreen = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(

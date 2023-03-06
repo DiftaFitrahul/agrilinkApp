@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:gdsc_project/page/home_page.dart';
-import 'package:gdsc_project/page/splash-screen/second_splashscreen.dart';
+
+import '../../page/splash-screen/second_splashscreen.dart';
 
 class FirstSplashScreen extends StatefulWidget {
   const FirstSplashScreen({super.key});

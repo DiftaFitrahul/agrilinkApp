@@ -1,9 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gdsc_project/component/filter_component.dart';
-import 'package:gdsc_project/component/sell_item_component.dart';
-import 'package:gdsc_project/component/title_component.dart';
+
+import '../component/title_component.dart';
 
 class MarketPageSeller extends ConsumerStatefulWidget {
   const MarketPageSeller({super.key});
@@ -28,7 +27,7 @@ class _MarketPageState extends ConsumerState<MarketPageSeller> {
   @override
   Widget build(BuildContext context) {
     final widthScreen = MediaQuery.of(context).size.width;
-    final heightScreen = MediaQuery.of(context).size.height;
+   
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
@@ -119,12 +118,11 @@ class _MarketPageState extends ConsumerState<MarketPageSeller> {
                                   text = '15500';
                                   break;
                               }
-                              return Container(
-                                  child: Text(
+                              return Text(
                                 text,
                                 style: const TextStyle(
-                                    color: Colors.white, fontSize: 11),
-                              ));
+                                color: Colors.white, fontSize: 11),
+                              );
                             },
                           )),
                           topTitles: AxisTitles(

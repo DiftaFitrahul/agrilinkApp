@@ -74,16 +74,16 @@ class _ForumsPageState extends ConsumerState<ForumsPage> {
                 itemBuilder: (context, index) => Padding(
                   padding: const EdgeInsets.symmetric(vertical: 7),
                   child: ExpansionTile(
-                    tilePadding: EdgeInsets.all(20),
+                    tilePadding: const EdgeInsets.all(20),
                     title: Text(
                       title[index],
                       style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                          const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                     ),
                     subtitle: Text(
                       subtitle[index],
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontSize: 17, color: Colors.black54),
+                      style: const TextStyle(fontSize: 17, color: Colors.black54),
                     ),
                     trailing: const Text('11',
                         style: TextStyle(

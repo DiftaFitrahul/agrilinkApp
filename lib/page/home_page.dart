@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gdsc_project/component/home_page_content.dart';
-import 'package:gdsc_project/page/account_page.dart';
-import 'package:gdsc_project/page/auth_checker.dart';
-import 'package:gdsc_project/page/farmpedia_page.dart';
-import 'package:gdsc_project/page/forums_page.dart';
-import 'package:gdsc_project/page/market_page_seller.dart';
-import 'package:gdsc_project/page/settings_page.dart';
-import 'package:gdsc_project/provider/auth_provider/auth_provider.dart';
+
+import '../component/home_page_content.dart';
+import '../component/weather_component.dart';
+import '../page/account_page.dart';
+import '../page/farmpedia_page.dart';
+import '../page/market_page_seller.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -66,7 +62,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                             borderRadius: BorderRadius.circular(25)),
                         child: IconButton(
                             padding: EdgeInsets.zero,
-                            constraints: BoxConstraints(),
+                            constraints: const BoxConstraints(),
                             onPressed: () {
                               Navigator.push(
                                   context,
@@ -85,7 +81,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                 Stack(
                   children: [
                     Container(
-                      height: 200,
+                      height: 180,
                       decoration: BoxDecoration(
                           color: const Color.fromARGB(255, 5, 130, 64),
                           borderRadius: BorderRadius.circular(12)),
@@ -247,7 +243,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (ctx) => MarketPageSeller()));
+                                        builder: (ctx) => const MarketPageSeller()));
                               },
                               icon: const Icon(
                                 Icons.store,
@@ -266,6 +262,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                     ),
                   ),
                 ]),
+                const WeatherComponent(),
                 HomePageContent(
                   title: 'Mau tahu lebih banyak tentang bertani',
                   imagePath: 'assets/images/farm-1.png',

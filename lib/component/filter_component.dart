@@ -47,7 +47,7 @@ class _FilterComponentState extends ConsumerState<FilterComponent> {
             child: Center(
               child: Text(
                 widget.filterList[index],
-                style: TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white),
               ),
             ),
           ),

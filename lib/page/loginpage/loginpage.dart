@@ -1,18 +1,13 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gdsc_project/page/bottomnavigation_bar.dart';
-import 'package:gdsc_project/page/home_page.dart';
-import 'package:gdsc_project/page/registerPage/letus.dart';
-import 'package:gdsc_project/provider/auth_provider/auth_provider.dart';
-import 'package:gdsc_project/service/nodejs_service/signin_service.dart';
-import 'package:http/http.dart' as http;
+
+import '../../page/bottomnavigation_bar.dart';
+import '../../page/registerPage/letus.dart';
+import '../../provider/auth_provider/auth_provider.dart';
+import '../../service/nodejs_service/signin_service.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
-  LoginPage({super.key});
+  const LoginPage({super.key});
 
   @override
   ConsumerState<LoginPage> createState() => _LoginPageState();
@@ -37,8 +32,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final authState = ref.watch(authStateProvider);
-    final Color green1 = Color.fromARGB(255, 135, 193, 89);
-    final Color green2 = Color.fromARGB(255, 5, 130, 64);
+    const Color green1 = Color.fromARGB(255, 135, 193, 89);
+    const Color green2 = Color.fromARGB(255, 5, 130, 64);
     return Scaffold(
       body: SingleChildScrollView(
         child: Form(
@@ -58,7 +53,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     'Welcome Back!',
                     style: TextStyle(
                         fontSize: 30,
@@ -68,8 +63,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8),
+                  const Padding(
+                    padding:  EdgeInsets.all(8),
                     child: Align(
                         alignment: Alignment.topLeft,
                         child: Text(
@@ -104,8 +99,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       }
                     },
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8),
+                  const Padding(
+                    padding:  EdgeInsets.all(8),
                     child: Align(
                         alignment: Alignment.topLeft,
                         child: Text(
@@ -149,7 +144,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     padding: const EdgeInsets.only(left: 8, top: 4, bottom: 28),
                     child: InkWell(
                       onTap: () {},
-                      child: Align(
+                      child: const Align(
                           alignment: Alignment.topLeft,
                           child: Text('Forgot password?',
                               style: TextStyle(
@@ -213,7 +208,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   Padding(
                     padding: const EdgeInsets.only(top: 10, bottom: 10),
                     child: Row(
-                      children: [
+                      children: const [
                         Expanded(
                           child: Divider(
                             thickness: 1,
@@ -221,7 +216,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 5),
+                          padding:  EdgeInsets.symmetric(horizontal: 5),
                           child: Text('or, you can continue using',
                               style: TextStyle(color: green2)),
                         ),

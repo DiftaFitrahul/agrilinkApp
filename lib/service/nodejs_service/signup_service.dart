@@ -20,9 +20,8 @@ class RegisterAccount extends StateNotifier<String> {
             "username": username,
             "role": role
           }));
-      print('========================');
-      print(response.body.toString());
-      print('========================');
+     
+     
       if (response.statusCode == 200) {
         state = response.body.toString();
       } else {

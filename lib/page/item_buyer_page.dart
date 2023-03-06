@@ -55,7 +55,7 @@ class MarketBuyerPage extends ConsumerWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

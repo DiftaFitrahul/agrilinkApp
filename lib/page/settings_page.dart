@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gdsc_project/page/auth_checker.dart';
 
-import '../provider/auth_provider/auth_provider.dart';
 
 class SettingsPage extends ConsumerStatefulWidget {
   const SettingsPage({super.key});
@@ -83,7 +81,7 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
             child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 12),
           child: Container(
-            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 12),
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
             width: widthScreen,
             decoration: BoxDecoration(
                 color: Colors.white, borderRadius: BorderRadius.circular(20)),

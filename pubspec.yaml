@@ -93,6 +93,11 @@ flutter:
     - assets/images/rice-sell.png
     - assets/images/farmpedia_content.png
     - assets/images/accountUser.png
+    - assets/images/weather-1.png
+    - assets/icons/Weather/cerah.png
+    - assets/icons/Weather/awan.png
+    - assets/icons/Weather/hujan.png
+    
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

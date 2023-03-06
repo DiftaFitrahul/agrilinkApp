@@ -17,10 +17,8 @@ class SignInAccount extends StateNotifier<String> {
             "email": email,
             "password": password,
           }));
-      final data = jsonDecode(response.body);
-      print('========================');
-      print(data.toString());
-      print('========================');
+    
+     
       if (response.statusCode == 200) {
         state = response.body.toString();
       } else {

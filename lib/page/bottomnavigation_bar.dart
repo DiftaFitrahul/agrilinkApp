@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gdsc_project/page/farmpedia_page.dart';
+
+import '../page/farmpedia_page.dart';
 import '../page/market_page_buyer.dart';
 import '../page/forums_page.dart';
 import '../page/home_page.dart';
-import 'market_page_seller.dart';
 import '../page/settings_page.dart';
 
 class BottomNavigationBarPage extends ConsumerStatefulWidget {

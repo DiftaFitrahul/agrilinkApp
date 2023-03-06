@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gdsc_project/page/item_buyer_page.dart';
+import '../page/item_buyer_page.dart';
 
 class SellItemComponent extends ConsumerWidget {
   final String imagePath;
@@ -35,7 +35,7 @@ class SellItemComponent extends ConsumerWidget {
             boxShadow: [
               BoxShadow(
                   color: Colors.black.withOpacity(0.2),
-                  offset: Offset(3, 4),
+                  offset: const Offset(3, 4),
                   spreadRadius: 2,
                   blurRadius: 4)
             ]),

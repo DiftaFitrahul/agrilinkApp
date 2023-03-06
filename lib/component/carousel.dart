@@ -12,7 +12,7 @@ class CarouserlSliderPage extends ConsumerWidget {
       InkWell(
         onTap: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (ctx) => ArticlePage()));
+              context, MaterialPageRoute(builder: (ctx) => const ArticlePage()));
         },
         child: Stack(children: [
           SizedBox(

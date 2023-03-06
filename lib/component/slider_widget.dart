@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class SliderWidget extends StatelessWidget {
   final String title;
@@ -17,7 +15,7 @@ class SliderWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(title, style: TextStyle(color: Colors.white)),
+        Text(title, style: const TextStyle(color: Colors.white)),
         const SizedBox(
           height: 10,
         ),
@@ -29,7 +27,7 @@ class SliderWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 60),
           child: Text(
             description,
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
             textAlign: TextAlign.center,
             maxLines: 5,
             overflow: TextOverflow.ellipsis,

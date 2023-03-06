@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gdsc_project/page/bottomnavigation_bar.dart';
-import 'package:gdsc_project/page/home_page.dart';
-import 'package:gdsc_project/page/loginpage/loginpage.dart';
-import 'package:gdsc_project/page/registerPage/letus.dart';
-import 'package:gdsc_project/page/splash-screen/first_splashscreen.dart';
-import 'package:gdsc_project/provider/auth_provider/auth_provider.dart';
+
+import '../page/bottomnavigation_bar.dart';
+import '../page/loginpage/loginpage.dart';
+import '../page/splash-screen/first_splashscreen.dart';
+import '../provider/auth_provider/auth_provider.dart';
 
 class AuthChecker extends ConsumerWidget {
   const AuthChecker({super.key});
@@ -16,12 +15,12 @@ class AuthChecker extends ConsumerWidget {
     return userStatus.when(
       data: (user) {
         if (user != null) {
-          return BottomNavigationBarPage();
+          return const BottomNavigationBarPage();
         } else {
-          return FirstSplashScreen();
+          return const FirstSplashScreen();
         }
       },
-      error: (error, stackTrace) => LoginPage(),
+      error: (error, stackTrace) => const LoginPage(),
       loading: () => const CircularProgressIndicator(),
     );
   }

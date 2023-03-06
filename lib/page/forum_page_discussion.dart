@@ -40,7 +40,6 @@ class _ForumPageDiscussionState extends ConsumerState<ForumPageDiscussion> {
   @override
   Widget build(BuildContext context) {
     final widthScreen = MediaQuery.of(context).size.width;
-    final heightScreen = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:gdsc_project/component/pageview_indicator.dart';
-import 'package:gdsc_project/component/slider_widget.dart';
+
+import '../../component/pageview_indicator.dart';
+import '../../component/slider_widget.dart';
 
 class SliderIntroPage extends StatefulWidget {
   const SliderIntroPage({super.key});

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:gdsc_project/page/registerPage/letus.dart';
-import 'package:gdsc_project/page/registerPage/silderIntro_page.dart';
+
+import '../../page/registerPage/letus.dart';
+import '../../page/registerPage/silder_intro_page.dart';
 
 class SecondSplashScreen extends StatefulWidget {
   const SecondSplashScreen({super.key});

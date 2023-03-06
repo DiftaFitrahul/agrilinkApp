@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:gdsc_project/page/loginpage/loginpage.dart';
-import 'package:gdsc_project/page/registerPage/register.dart';
+
+import '../../page/loginpage/loginpage.dart';
+import '../../page/registerPage/register.dart';
 
 class Register extends StatelessWidget {
   const Register({super.key});
@@ -92,7 +91,7 @@ class Register extends StatelessWidget {
                   TextButton(
                       onPressed: () {
                         Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (ctx) => LoginPage()));
+                            MaterialPageRoute(builder: (ctx) => const LoginPage()));
                       },
                       child: const Text('Login',
                           style: TextStyle(
